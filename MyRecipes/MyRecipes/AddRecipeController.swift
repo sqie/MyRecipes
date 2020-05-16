@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class AddRecipeController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -62,7 +63,27 @@ class AddRecipeController: UIViewController, UITableViewDelegate, UITableViewDat
         
         let recipeName = recipeNameTextField.text!
         
-        //save recipe to core data
+        let recipe = Recipe(context: AppDelegate.viewContext)
+        recipe.name = recipeName
+        
+        //save ingredients to recipe in core data
+        for ingredient in ingredients {
+            let curIngredient = Ingredient(context: recipe.managedObjectContext!)
+            curIngredient.name = ingredient
+        }
+        
+        //save steps to recipe in core data
+        for step in steps {
+            let curStep = Step(context: recipe.managedObjectContext!)
+            curStep.name = step
+        }
+        
+        //try to save to core data
+        do {
+            try AppDelegate.viewContext.save()
+        } catch {
+            print("Couldn't save to core data")
+        }
         
         //---------------
         

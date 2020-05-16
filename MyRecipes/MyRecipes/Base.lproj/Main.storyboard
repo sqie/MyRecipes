@@ -239,66 +239,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hvf-bM-aat">
-                                <rect key="frame" x="20" y="48" width="33" height="32"/>
-                                <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="33" id="eBe-ij-v4N"/>
-                                    <constraint firstAttribute="height" constant="32" id="vQe-Va-5rR"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="31"/>
-                                <state key="normal" image="pencil" catalog="system">
-                                    <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="editRecipe" destination="gsj-O6-3Bn" eventType="touchUpInside" id="TF2-dQ-8r7"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bqq-N5-Bgc">
-                                <rect key="frame" x="142" y="48" width="33" height="33"/>
-                                <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="33" id="A7d-vq-LCj"/>
-                                    <constraint firstAttribute="height" constant="33" id="UPl-PM-Cmh"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="31"/>
-                                <state key="normal" image="trash" catalog="system">
-                                    <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="deleteRecipe" destination="gsj-O6-3Bn" eventType="touchUpInside" id="c1Y-za-mRG"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WkQ-sD-Ohl">
-                                <rect key="frame" x="81" y="48" width="33" height="33"/>
-                                <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="33" id="LBX-pj-ifi"/>
-                                    <constraint firstAttribute="height" constant="33" id="e83-q3-E2e"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="31"/>
-                                <state key="normal" image="play.fill" catalog="system">
-                                    <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="cookRecipe" destination="gsj-O6-3Bn" eventType="touchUpInside" id="oBF-gp-C4C"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingredients" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iIK-Ac-aF5">
                                 <rect key="frame" x="20" y="150" width="86" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -344,43 +284,79 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bqq-N5-Bgc">
+                                <rect key="frame" x="81" y="48" width="33" height="33"/>
+                                <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="33" id="A7d-vq-LCj"/>
+                                    <constraint firstAttribute="height" constant="33" id="UPl-PM-Cmh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="31"/>
+                                <state key="normal" image="trash" catalog="system">
+                                    <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="deleteRecipe" destination="gsj-O6-3Bn" eventType="touchUpInside" id="c1Y-za-mRG"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WkQ-sD-Ohl">
+                                <rect key="frame" x="20" y="48" width="33" height="33"/>
+                                <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="33" id="LBX-pj-ifi"/>
+                                    <constraint firstAttribute="height" constant="33" id="e83-q3-E2e"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="31"/>
+                                <state key="normal" image="play.fill" catalog="system">
+                                    <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="cookRecipe" destination="gsj-O6-3Bn" eventType="touchUpInside" id="oBF-gp-C4C"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="WHe-Zd-aln" firstAttribute="bottom" secondItem="CoU-I3-c40" secondAttribute="bottom" constant="781" id="0Ah-Br-Zm4"/>
                             <constraint firstItem="WHe-Zd-aln" firstAttribute="bottom" secondItem="LIl-0c-qG0" secondAttribute="bottom" constant="325.5" id="0Xl-ZQ-V6Q"/>
                             <constraint firstItem="CoU-I3-c40" firstAttribute="top" secondItem="WHe-Zd-aln" secondAttribute="top" id="0xq-p5-m0W"/>
-                            <constraint firstItem="hvf-bM-aat" firstAttribute="top" secondItem="WHe-Zd-aln" secondAttribute="top" constant="4" id="1fV-jQ-Yy1"/>
-                            <constraint firstItem="hvf-bM-aat" firstAttribute="leading" secondItem="WHe-Zd-aln" secondAttribute="leading" constant="20" id="67y-gb-hWY"/>
+                            <constraint firstItem="bqq-N5-Bgc" firstAttribute="top" secondItem="WHe-Zd-aln" secondAttribute="top" constant="4" id="3tI-zA-3CV"/>
                             <constraint firstItem="am3-OD-j2G" firstAttribute="leading" secondItem="WHe-Zd-aln" secondAttribute="leading" constant="20" id="6kZ-4U-sj0"/>
                             <constraint firstItem="CoU-I3-c40" firstAttribute="leading" secondItem="WHe-Zd-aln" secondAttribute="leading" constant="361" id="9YZ-69-Lov"/>
                             <constraint firstItem="WHe-Zd-aln" firstAttribute="bottom" secondItem="iIK-Ac-aF5" secondAttribute="bottom" constant="691.5" id="9bW-Uc-nGP"/>
                             <constraint firstItem="am3-OD-j2G" firstAttribute="top" secondItem="WHe-Zd-aln" secondAttribute="top" constant="505" id="B7f-6S-Wsh"/>
-                            <constraint firstItem="bqq-N5-Bgc" firstAttribute="top" secondItem="WHe-Zd-aln" secondAttribute="top" constant="4" id="ElM-WG-KkO"/>
-                            <constraint firstItem="bqq-N5-Bgc" firstAttribute="leading" secondItem="WHe-Zd-aln" secondAttribute="leading" constant="142" id="FKT-P7-3XJ"/>
+                            <constraint firstItem="WHe-Zd-aln" firstAttribute="bottom" secondItem="bqq-N5-Bgc" secondAttribute="bottom" constant="781" id="ByC-If-82n"/>
                             <constraint firstItem="LYC-Zh-qPX" firstAttribute="top" secondItem="WHe-Zd-aln" secondAttribute="top" constant="139" id="LTN-sw-oBf"/>
-                            <constraint firstItem="WHe-Zd-aln" firstAttribute="bottom" secondItem="hvf-bM-aat" secondAttribute="bottom" constant="782" id="LUD-2g-jjS"/>
                             <constraint firstItem="WHe-Zd-aln" firstAttribute="bottom" secondItem="LYC-Zh-qPX" secondAttribute="bottom" constant="366" id="MdM-hD-ljJ"/>
-                            <constraint firstItem="WkQ-sD-Ohl" firstAttribute="leading" secondItem="WHe-Zd-aln" secondAttribute="leading" constant="81" id="Q3R-ml-hbc"/>
                             <constraint firstItem="WHe-Zd-aln" firstAttribute="trailing" secondItem="4EE-iI-HOc" secondAttribute="trailing" constant="20" id="R6p-UF-hQw"/>
+                            <constraint firstItem="WHe-Zd-aln" firstAttribute="bottom" secondItem="WkQ-sD-Ohl" secondAttribute="bottom" constant="781" id="THE-3C-VJx"/>
                             <constraint firstItem="LIl-0c-qG0" firstAttribute="top" secondItem="WHe-Zd-aln" secondAttribute="top" constant="472" id="Ttl-ev-jwM"/>
-                            <constraint firstItem="WHe-Zd-aln" firstAttribute="trailing" secondItem="hvf-bM-aat" secondAttribute="trailing" constant="361" id="U68-nM-Y9e"/>
                             <constraint firstItem="WHe-Zd-aln" firstAttribute="trailing" secondItem="CoU-I3-c40" secondAttribute="trailing" constant="20" id="Vbc-py-GLo"/>
-                            <constraint firstItem="WHe-Zd-aln" firstAttribute="bottom" secondItem="WkQ-sD-Ohl" secondAttribute="bottom" constant="781" id="av0-T9-zJk"/>
                             <constraint firstItem="4EE-iI-HOc" firstAttribute="leading" secondItem="WHe-Zd-aln" secondAttribute="leading" constant="20" id="dnJ-ee-5dI"/>
-                            <constraint firstItem="WkQ-sD-Ohl" firstAttribute="top" secondItem="WHe-Zd-aln" secondAttribute="top" constant="4" id="etK-LC-0Px"/>
-                            <constraint firstItem="WHe-Zd-aln" firstAttribute="trailing" secondItem="bqq-N5-Bgc" secondAttribute="trailing" constant="239" id="fBx-LT-3bQ"/>
+                            <constraint firstItem="bqq-N5-Bgc" firstAttribute="leading" secondItem="WHe-Zd-aln" secondAttribute="leading" constant="81" id="ewv-sh-k4P"/>
                             <constraint firstItem="LIl-0c-qG0" firstAttribute="leading" secondItem="WHe-Zd-aln" secondAttribute="leading" constant="20" id="g5E-ze-ObH"/>
                             <constraint firstItem="LYC-Zh-qPX" firstAttribute="leading" secondItem="WHe-Zd-aln" secondAttribute="leading" constant="20" id="h28-fc-vhO"/>
+                            <constraint firstItem="WHe-Zd-aln" firstAttribute="trailing" secondItem="bqq-N5-Bgc" secondAttribute="trailing" constant="300" id="ksa-Bw-lcH"/>
                             <constraint firstItem="4EE-iI-HOc" firstAttribute="top" secondItem="WHe-Zd-aln" secondAttribute="top" constant="63" id="nTL-ZU-A8v"/>
                             <constraint firstItem="WHe-Zd-aln" firstAttribute="trailing" secondItem="LIl-0c-qG0" secondAttribute="trailing" constant="350" id="o6r-j2-3cZ"/>
                             <constraint firstItem="WHe-Zd-aln" firstAttribute="trailing" secondItem="LYC-Zh-qPX" secondAttribute="trailing" constant="20" id="oT9-o8-IMm"/>
                             <constraint firstItem="WHe-Zd-aln" firstAttribute="bottom" secondItem="am3-OD-j2G" secondAttribute="bottom" id="p5p-FA-62b"/>
                             <constraint firstItem="iIK-Ac-aF5" firstAttribute="top" secondItem="WHe-Zd-aln" secondAttribute="top" constant="106" id="pLS-AL-n6r"/>
+                            <constraint firstItem="WkQ-sD-Ohl" firstAttribute="top" secondItem="WHe-Zd-aln" secondAttribute="top" constant="4" id="r5g-2f-9e0"/>
                             <constraint firstItem="WHe-Zd-aln" firstAttribute="trailing" secondItem="am3-OD-j2G" secondAttribute="trailing" constant="20" id="t2a-YA-cf5"/>
-                            <constraint firstItem="WHe-Zd-aln" firstAttribute="bottom" secondItem="bqq-N5-Bgc" secondAttribute="bottom" constant="781" id="upw-A4-dce"/>
+                            <constraint firstItem="WHe-Zd-aln" firstAttribute="trailing" secondItem="WkQ-sD-Ohl" secondAttribute="trailing" constant="361" id="v2J-Ug-Rxe"/>
+                            <constraint firstItem="WkQ-sD-Ohl" firstAttribute="leading" secondItem="WHe-Zd-aln" secondAttribute="leading" constant="20" id="xeP-NE-yNt"/>
                             <constraint firstItem="WHe-Zd-aln" firstAttribute="bottom" secondItem="4EE-iI-HOc" secondAttribute="bottom" constant="729.5" id="yHE-IU-WtS"/>
-                            <constraint firstItem="WHe-Zd-aln" firstAttribute="trailing" secondItem="WkQ-sD-Ohl" secondAttribute="trailing" constant="300" id="ydi-jz-hXM"/>
                             <constraint firstItem="iIK-Ac-aF5" firstAttribute="leading" secondItem="WHe-Zd-aln" secondAttribute="leading" constant="20" id="ygz-GR-3LC"/>
                             <constraint firstItem="WHe-Zd-aln" firstAttribute="trailing" secondItem="iIK-Ac-aF5" secondAttribute="trailing" constant="308" id="yyQ-rW-XOm"/>
                         </constraints>
@@ -390,7 +366,6 @@
                         <outlet property="closeButton" destination="CoU-I3-c40" id="FRQ-J4-qmu"/>
                         <outlet property="cookButton" destination="WkQ-sD-Ohl" id="bnP-bg-p89"/>
                         <outlet property="deleteButton" destination="bqq-N5-Bgc" id="Ik2-yG-ade"/>
-                        <outlet property="editButton" destination="hvf-bM-aat" id="MUn-pF-dVf"/>
                         <outlet property="ingredientsTableView" destination="LYC-Zh-qPX" id="kmE-x6-k5D"/>
                         <outlet property="recipeNameTextField" destination="4EE-iI-HOc" id="FQW-dF-zyj"/>
                         <outlet property="stepsTableView" destination="am3-OD-j2G" id="c0M-me-7F5"/>
@@ -403,7 +378,7 @@
         <!--Step Controller-->
         <scene sceneID="47s-X6-JZJ">
             <objects>
-                <viewController id="RsP-Te-8fs" customClass="StepController" customModule="MyRecipes" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StepController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="RsP-Te-8fs" customClass="StepController" customModule="MyRecipes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JHT-cV-Z3n">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -489,7 +464,6 @@
     <resources>
         <image name="arrowtriangle.left.fill" catalog="system" width="128" height="113"/>
         <image name="checkmark" catalog="system" width="128" height="114"/>
-        <image name="pencil" catalog="system" width="128" height="113"/>
         <image name="play.fill" catalog="system" width="116" height="128"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="trash" catalog="system" width="121" height="128"/>

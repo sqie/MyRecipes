@@ -11,7 +11,6 @@ import CoreData
 
 class RecipeController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var cookButton: UIButton!
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var closeButton: UIButton!
@@ -76,12 +75,12 @@ class RecipeController: UIViewController, UITableViewDelegate, UITableViewDataSo
         return cell
     }
     
-    @IBAction func editRecipe() {
-        
-    }
-    
     @IBAction func cookRecipe() {
         
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "StepController") as! StepController
+        nextViewController.modalPresentationStyle = .fullScreen
+        self.present(nextViewController, animated:true, completion:nil)
     }
     
     @IBAction func deleteRecipe() {

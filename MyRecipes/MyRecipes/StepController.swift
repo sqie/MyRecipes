@@ -21,6 +21,7 @@ class StepController: UIViewController {
         
         super.viewDidLoad()
         prevButton.isHidden = true
+        nextButton.isHidden = steps.count == 1 ? true : false
         stepTextField.text = steps[stepLoc]
     }
     

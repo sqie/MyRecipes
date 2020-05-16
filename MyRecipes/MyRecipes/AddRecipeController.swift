@@ -8,8 +8,8 @@
 
 import UIKit
 
-class AddRecipeController: UIViewController {
-
+class AddRecipeController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
     @IBOutlet weak var recipeNameTextField: UITextField!
     @IBOutlet weak var saveRecipeButton: UIButton!
     @IBOutlet weak var addIngredientButton: UIButton!
@@ -17,31 +17,112 @@ class AddRecipeController: UIViewController {
     @IBOutlet weak var addStepButton: UIButton!
     @IBOutlet weak var stepsTableView: UITableView!
     
+    let cellReuseIdentifier = "cell"
+    
+    var ingredients = [String]()
+    var steps = [String]()
+    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-
+        
+        ingredientsTableView.delegate = self
+        ingredientsTableView.dataSource = self
+        ingredientsTableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
+        
+        stepsTableView.delegate = self
+        stepsTableView.dataSource = self
+        stepsTableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
     }
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return tableView == ingredientsTableView ? self.ingredients.count : self.steps.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell:UITableViewCell = (tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as UITableViewCell?)!
+        cell.backgroundColor = UIColor.systemGray5
+        
+        //if modifying ingredients table
+        if tableView == ingredientsTableView {
+            cell.textLabel?.text = ingredients[indexPath.row]
+        }
+        
+        //if modifying steps table
+        else {
+            cell.textLabel?.text = steps[indexPath.row]
+        }
+        
+        return cell
+    }
+    
+    
     @IBAction func saveRecipe() {
-        print("save recipe")
+        
+        let recipeName = recipeNameTextField.text!
+        
+        //save recipe to core data
+        
+        //---------------
+        
+        let alert = UIAlertController(title: "Recipe saved", message: "\(recipeName) saved", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { action in
+        }))
+        
+        self.present(alert, animated: true)
     }
     
     @IBAction func addIngredient() {
-        print("add ingredient")
+        
+        let alert = UIAlertController(title: "Add ingredient", message: "Enter the ingredient", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { action in
+        }))
+        
+        alert.addTextField(configurationHandler: { textField in
+        })
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+            
+            //if the user added an ingredient
+            if let ingredient = alert.textFields?.first?.text {
+                
+                self.ingredients.append(ingredient)
+                
+                self.ingredientsTableView.beginUpdates()
+                self.ingredientsTableView.insertRows(at: [IndexPath(row: self.ingredients.count - 1, section: 0)], with: .automatic)
+                self.ingredientsTableView.endUpdates()
+            }
+        }))
+        
+        self.present(alert, animated: true)
     }
     
     @IBAction func addStep() {
-        print("add step")
+        
+        let alert = UIAlertController(title: "Add step", message: "Enter the step", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { action in
+        }))
+        
+        alert.addTextField(configurationHandler: { textField in
+        })
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+            
+            //if the user added a step
+            if let step = alert.textFields?.first?.text {
+                
+                self.steps.append(step)
+                
+                self.stepsTableView.beginUpdates()
+                self.stepsTableView.insertRows(at: [IndexPath(row: self.steps.count - 1, section: 0)], with: .automatic)
+                self.stepsTableView.endUpdates()
+            }
+        }))
+        
+        self.present(alert, animated: true)
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

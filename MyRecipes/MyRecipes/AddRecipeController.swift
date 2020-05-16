@@ -68,14 +68,16 @@ class AddRecipeController: UIViewController, UITableViewDelegate, UITableViewDat
         
         //save ingredients to recipe in core data
         for ingredient in ingredients {
-            let curIngredient = Ingredient(context: recipe.managedObjectContext!)
+            let curIngredient = Ingredient(context: AppDelegate.viewContext)
             curIngredient.name = ingredient
+            curIngredient.recipe = recipe
         }
         
         //save steps to recipe in core data
         for step in steps {
-            let curStep = Step(context: recipe.managedObjectContext!)
+            let curStep = Step(context: AppDelegate.viewContext)
             curStep.name = step
+            curStep.recipe = recipe
         }
         
         //try to save to core data

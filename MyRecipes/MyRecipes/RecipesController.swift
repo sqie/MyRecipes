@@ -9,15 +9,15 @@
 import UIKit
 import CoreData
 
+var recipes = [String]()
+var curRecipeLoc = -1
 var addedRecipe = true
+let cellReuseIdentifier = "cell"
 
 class RecipesController: UIViewController, UITableViewDelegate, UITableViewDataSource{
 
     @IBOutlet weak var addRecipeButton: UIButton!
     @IBOutlet weak var recipesTableView: UITableView!
-    
-    var recipes = [String]()
-    let cellReuseIdentifier = "cell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +41,13 @@ class RecipesController: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("This cell from the chat list was selected: \(indexPath.row)")
+        
+        curRecipeLoc = indexPath.row
+        
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "RecipeController") as! RecipeController
+        nextViewController.modalPresentationStyle = .fullScreen
+        self.present(nextViewController, animated:true, completion:nil)
     }
     
     func refresh(){

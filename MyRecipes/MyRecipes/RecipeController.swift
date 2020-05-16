@@ -7,24 +7,76 @@
 //
 
 import UIKit
+import CoreData
 
-class RecipeController: UIViewController {
+//var recipes = [String]()
+//var curRecipeLoc = -1
+//var addedRecipe = true
 
+class RecipeController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+
+    @IBOutlet weak var editButton: UIButton!
+    @IBOutlet weak var cookButton: UIButton!
+    @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet weak var closeButton: UIButton!
+    
+    @IBOutlet weak var recipeNameTextField: UILabel!
+    
+    @IBOutlet weak var ingredientsTableView: UITableView!
+    @IBOutlet weak var stepsTableView: UITableView!
+    
+    var ingredients = [String]()
+    var steps = [String]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        recipeNameTextField.text! = recipes[curRecipeLoc]
+        
+        ingredientsTableView.delegate = self
+        ingredientsTableView.dataSource = self
+        ingredientsTableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
+        
+        stepsTableView.delegate = self
+        stepsTableView.dataSource = self
+        stepsTableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
+        
+        //----------------------
+        
+        let query: NSFetchRequest<Recipe> = Recipe.fetchRequest()
+
+        //update the recipe's ingredients and steps
+        if let results = try? AppDelegate.viewContext.fetch(query) {
+
+            let curRecipe = results[curRecipeLoc]
+
+            ingredients = (curRecipe.ingredients?.allObjects as! [Ingredient]).map{ $0.name!}
+            steps = (curRecipe.steps?.allObjects as! [Step]).map{ $0.name!}
+        }
+
+        self.ingredientsTableView.reloadData()
+        self.stepsTableView.reloadData()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return tableView == ingredientsTableView ? self.ingredients.count : self.steps.count
     }
-    */
-
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell:UITableViewCell = (tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as UITableViewCell?)!
+        cell.backgroundColor = UIColor.systemGray5
+        
+        //if modifying ingredients table
+        if tableView == ingredientsTableView {
+            cell.textLabel?.text = ingredients[indexPath.row]
+        }
+        
+        //if modifying steps table
+        else {
+            cell.textLabel?.text = steps[indexPath.row]
+        }
+        
+        return cell
+    }
 }

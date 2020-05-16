@@ -14,14 +14,19 @@ class AddRecipeController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet weak var recipeNameTextField: UITextField!
     @IBOutlet weak var saveRecipeButton: UIButton!
     @IBOutlet weak var addIngredientButton: UIButton!
+    @IBOutlet weak var editIngredientsButton: UIButton!
     @IBOutlet weak var ingredientsTableView: UITableView!
     @IBOutlet weak var addStepButton: UIButton!
+    @IBOutlet weak var editStepsButton: UIButton!
     @IBOutlet weak var stepsTableView: UITableView!
     
     let cellReuseIdentifier = "cell"
     
     var ingredients = [String]()
     var steps = [String]()
+    
+    var checkImage: UIImage!
+    var editImage: UIImage!
     
     override func viewDidLoad() {
         
@@ -34,6 +39,9 @@ class AddRecipeController: UIViewController, UITableViewDelegate, UITableViewDat
         stepsTableView.delegate = self
         stepsTableView.dataSource = self
         stepsTableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
+        
+        editImage = addIngredientButton.image(for: .normal)
+        checkImage = saveRecipeButton.image(for: .normal)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -57,7 +65,6 @@ class AddRecipeController: UIViewController, UITableViewDelegate, UITableViewDat
         
         return cell
     }
-    
     
     @IBAction func saveRecipe() {
         
@@ -115,6 +122,21 @@ class AddRecipeController: UIViewController, UITableViewDelegate, UITableViewDat
         }))
         
         self.present(alert, animated: true)
+    }
+    
+    @IBAction func editIngredients() {
+        
+        ingredientsTableView.isEditing = !ingredientsTableView.isEditing
+        
+        //if the user wants to edit the ingredients
+        if ingredientsTableView.isEditing {
+            editIngredientsButton.setImage(checkImage, for: .normal)
+        }
+        
+        //if the user finished editing the ingredients
+        else {
+            editIngredientsButton.setImage(editImage, for: .normal)
+        }
     }
     
     @IBAction func addStep() {

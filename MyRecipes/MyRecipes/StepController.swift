@@ -50,11 +50,7 @@ class StepController: UIViewController {
             nextButton.isHidden = true
         }
         
-        //if not at the last step
-        else {
-            prevButton.isHidden = false
-        }
-        
+        prevButton.isHidden = false
         stepTextField.text = steps[stepLoc]
     }
 }

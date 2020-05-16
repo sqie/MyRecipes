@@ -37,6 +37,9 @@
                                         <integer key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="WEo-QQ-qPl" kind="show" id="Tu4-IA-M3o"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -56,6 +59,10 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="fWx-1y-PYW"/>
+                    <connections>
+                        <outlet property="addRecipeButton" destination="qMP-OW-88o" id="RVP-Yh-upU"/>
+                        <outlet property="recipesTableOutlet" destination="YXf-CQ-5Pm" id="ccw-6Z-1yz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -88,71 +95,109 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Recipe name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="10j-EM-vuy">
-                                <rect key="frame" x="20" y="84" width="374" height="34"/>
+                                <rect key="frame" x="20" y="118" width="322" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingredients" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vVN-HT-DHx">
-                                <rect key="frame" x="20" y="147" width="86" height="20.5"/>
+                                <rect key="frame" x="20" y="181" width="86" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NeJ-Lm-VPP">
-                                <rect key="frame" x="364" y="142" width="30" height="30"/>
+                                <rect key="frame" x="364" y="176" width="30" height="30"/>
                                 <state key="normal" title="Add"/>
+                                <connections>
+                                    <action selector="addIngredient" destination="WEo-QQ-qPl" eventType="touchUpInside" id="RwV-HE-A67"/>
+                                </connections>
                             </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ngP-pH-ZYD">
+                                <rect key="frame" x="20" y="214" width="374" height="292"/>
+                                <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Steps" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0D0-Gq-FfI">
-                                <rect key="frame" x="20" y="513" width="44" height="20.5"/>
+                                <rect key="frame" x="20" y="537" width="44" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ngP-pH-ZYD">
-                                <rect key="frame" x="20" y="180" width="374" height="313"/>
-                                <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </tableView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9D3-Ys-XrH">
-                                <rect key="frame" x="20" y="546" width="374" height="313"/>
-                                <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n0O-rs-nUg">
-                                <rect key="frame" x="364" y="508" width="30" height="30"/>
+                                <rect key="frame" x="364" y="532" width="30" height="30"/>
                                 <state key="normal" title="Add"/>
+                                <connections>
+                                    <action selector="addStep" destination="WEo-QQ-qPl" eventType="touchUpInside" id="2dp-MV-MO9"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Nbp-z5-JGn">
+                                <rect key="frame" x="20" y="570" width="374" height="292"/>
+                                <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QEz-05-225">
+                                <rect key="frame" x="361" y="118" width="33" height="33"/>
+                                <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="33" id="646-iC-PHV"/>
+                                    <constraint firstAttribute="height" constant="33" id="lgz-W8-lgk"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="31"/>
+                                <state key="normal" image="checkmark" catalog="system">
+                                    <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="saveRecipe" destination="WEo-QQ-qPl" eventType="touchUpInside" id="bhU-q8-2Sg"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="QNC-72-OXl" firstAttribute="bottom" secondItem="NeJ-Lm-VPP" secondAttribute="bottom" constant="690" id="6xp-dw-Xp0"/>
-                            <constraint firstItem="QNC-72-OXl" firstAttribute="trailing" secondItem="10j-EM-vuy" secondAttribute="trailing" constant="20" id="7vm-HA-dmt"/>
-                            <constraint firstItem="0D0-Gq-FfI" firstAttribute="top" secondItem="QNC-72-OXl" secondAttribute="top" constant="469" id="7zG-kK-RHE"/>
-                            <constraint firstItem="QNC-72-OXl" firstAttribute="bottom" secondItem="9D3-Ys-XrH" secondAttribute="bottom" constant="3" id="9Js-R1-v7e"/>
-                            <constraint firstItem="QNC-72-OXl" firstAttribute="trailing" secondItem="n0O-rs-nUg" secondAttribute="trailing" constant="20" id="9wO-sT-Gdv"/>
-                            <constraint firstItem="vVN-HT-DHx" firstAttribute="leading" secondItem="QNC-72-OXl" secondAttribute="leading" constant="20" id="Bak-Ws-NXE"/>
-                            <constraint firstItem="10j-EM-vuy" firstAttribute="leading" secondItem="QNC-72-OXl" secondAttribute="leading" constant="20" id="CX7-DF-zyq"/>
-                            <constraint firstItem="ngP-pH-ZYD" firstAttribute="leading" secondItem="QNC-72-OXl" secondAttribute="leading" constant="20" id="D5a-Ae-BnR"/>
-                            <constraint firstItem="NeJ-Lm-VPP" firstAttribute="leading" secondItem="vVN-HT-DHx" secondAttribute="trailing" constant="258" id="DwX-Gg-Ajg"/>
-                            <constraint firstItem="NeJ-Lm-VPP" firstAttribute="top" secondItem="QNC-72-OXl" secondAttribute="top" constant="98" id="EYf-HQ-6tH"/>
-                            <constraint firstItem="QNC-72-OXl" firstAttribute="trailing" secondItem="9D3-Ys-XrH" secondAttribute="trailing" constant="20" id="GrX-PC-7ro"/>
-                            <constraint firstItem="0D0-Gq-FfI" firstAttribute="leading" secondItem="QNC-72-OXl" secondAttribute="leading" constant="20" id="H3q-yg-4LK"/>
-                            <constraint firstItem="vVN-HT-DHx" firstAttribute="top" secondItem="QNC-72-OXl" secondAttribute="top" constant="103" id="I8S-WK-vYx"/>
-                            <constraint firstItem="QNC-72-OXl" firstAttribute="trailing" secondItem="NeJ-Lm-VPP" secondAttribute="trailing" constant="20" id="LLE-t6-k1h"/>
-                            <constraint firstItem="QNC-72-OXl" firstAttribute="bottom" secondItem="10j-EM-vuy" secondAttribute="bottom" constant="744" id="QF7-hk-Mp7"/>
-                            <constraint firstItem="QNC-72-OXl" firstAttribute="bottom" secondItem="vVN-HT-DHx" secondAttribute="bottom" constant="694.5" id="SL8-0d-XXQ"/>
-                            <constraint firstItem="QNC-72-OXl" firstAttribute="bottom" secondItem="n0O-rs-nUg" secondAttribute="bottom" constant="324" id="TMW-ji-ovp"/>
-                            <constraint firstItem="QNC-72-OXl" firstAttribute="bottom" secondItem="ngP-pH-ZYD" secondAttribute="bottom" constant="369" id="aIx-WN-B7M"/>
-                            <constraint firstItem="9D3-Ys-XrH" firstAttribute="top" secondItem="QNC-72-OXl" secondAttribute="top" constant="502" id="cur-mr-UL6"/>
-                            <constraint firstItem="n0O-rs-nUg" firstAttribute="leading" secondItem="0D0-Gq-FfI" secondAttribute="trailing" constant="300" id="hNF-BB-uhC"/>
-                            <constraint firstItem="10j-EM-vuy" firstAttribute="top" secondItem="QNC-72-OXl" secondAttribute="top" constant="40" id="lpC-Um-Jua"/>
-                            <constraint firstItem="QNC-72-OXl" firstAttribute="bottom" secondItem="0D0-Gq-FfI" secondAttribute="bottom" constant="328.5" id="mcL-iD-CZy"/>
-                            <constraint firstItem="9D3-Ys-XrH" firstAttribute="leading" secondItem="QNC-72-OXl" secondAttribute="leading" constant="20" id="nJq-5r-8lp"/>
-                            <constraint firstItem="ngP-pH-ZYD" firstAttribute="top" secondItem="QNC-72-OXl" secondAttribute="top" constant="136" id="p1l-Kx-Sjb"/>
-                            <constraint firstItem="QNC-72-OXl" firstAttribute="trailing" secondItem="ngP-pH-ZYD" secondAttribute="trailing" constant="20" id="vK5-DR-b3Y"/>
-                            <constraint firstItem="n0O-rs-nUg" firstAttribute="top" secondItem="QNC-72-OXl" secondAttribute="top" constant="464" id="vZJ-ys-mbS"/>
+                            <constraint firstItem="QNC-72-OXl" firstAttribute="trailing" secondItem="Nbp-z5-JGn" secondAttribute="trailing" constant="20" id="4F5-xE-SND"/>
+                            <constraint firstItem="QNC-72-OXl" firstAttribute="bottom" secondItem="n0O-rs-nUg" secondAttribute="bottom" constant="300" id="4eY-o8-pM8"/>
+                            <constraint firstItem="ngP-pH-ZYD" firstAttribute="top" secondItem="QNC-72-OXl" secondAttribute="top" constant="126" id="9fz-OK-CrY"/>
+                            <constraint firstItem="0D0-Gq-FfI" firstAttribute="top" secondItem="QNC-72-OXl" secondAttribute="top" constant="449" id="A3w-2l-Nkc"/>
+                            <constraint firstItem="QEz-05-225" firstAttribute="top" secondItem="QNC-72-OXl" secondAttribute="top" constant="30" id="AHl-KP-Eu6"/>
+                            <constraint firstItem="n0O-rs-nUg" firstAttribute="top" secondItem="QNC-72-OXl" secondAttribute="top" constant="444" id="AVY-Ob-Q9A"/>
+                            <constraint firstItem="NeJ-Lm-VPP" firstAttribute="leading" secondItem="vVN-HT-DHx" secondAttribute="trailing" constant="258" id="AY2-bO-W1M"/>
+                            <constraint firstItem="QEz-05-225" firstAttribute="leading" secondItem="QNC-72-OXl" secondAttribute="leading" constant="361" id="FNg-Er-coQ"/>
+                            <constraint firstItem="QNC-72-OXl" firstAttribute="trailing" secondItem="QEz-05-225" secondAttribute="trailing" constant="20" id="JR3-wk-mPb"/>
+                            <constraint firstItem="10j-EM-vuy" firstAttribute="leading" secondItem="QNC-72-OXl" secondAttribute="leading" constant="20" id="KgT-Cg-rYV"/>
+                            <constraint firstItem="QNC-72-OXl" firstAttribute="bottom" secondItem="Nbp-z5-JGn" secondAttribute="bottom" id="O6E-aU-Mho"/>
+                            <constraint firstItem="NeJ-Lm-VPP" firstAttribute="top" secondItem="QNC-72-OXl" secondAttribute="top" constant="88" id="O7n-tW-bT8"/>
+                            <constraint firstItem="vVN-HT-DHx" firstAttribute="leading" secondItem="QNC-72-OXl" secondAttribute="leading" constant="20" id="RVj-oo-d1W"/>
+                            <constraint firstItem="n0O-rs-nUg" firstAttribute="leading" secondItem="0D0-Gq-FfI" secondAttribute="trailing" constant="300" id="Ss5-2f-Z3N"/>
+                            <constraint firstItem="vVN-HT-DHx" firstAttribute="top" secondItem="QNC-72-OXl" secondAttribute="top" constant="93" id="Sxy-dC-w3k"/>
+                            <constraint firstItem="QNC-72-OXl" firstAttribute="trailing" secondItem="n0O-rs-nUg" secondAttribute="trailing" constant="20" id="TTO-xK-k4p"/>
+                            <constraint firstItem="0D0-Gq-FfI" firstAttribute="leading" secondItem="QNC-72-OXl" secondAttribute="leading" constant="20" id="Tkk-zk-4z2"/>
+                            <constraint firstItem="QNC-72-OXl" firstAttribute="bottom" secondItem="10j-EM-vuy" secondAttribute="bottom" constant="710" id="W8x-VF-oQF"/>
+                            <constraint firstItem="QNC-72-OXl" firstAttribute="bottom" secondItem="0D0-Gq-FfI" secondAttribute="bottom" constant="304.5" id="XR3-Zr-GG1"/>
+                            <constraint firstItem="QNC-72-OXl" firstAttribute="trailing" secondItem="NeJ-Lm-VPP" secondAttribute="trailing" constant="20" id="Z3u-nH-Fna"/>
+                            <constraint firstItem="QNC-72-OXl" firstAttribute="trailing" secondItem="ngP-pH-ZYD" secondAttribute="trailing" constant="20" id="bVq-BG-bQK"/>
+                            <constraint firstItem="Nbp-z5-JGn" firstAttribute="leading" secondItem="QNC-72-OXl" secondAttribute="leading" constant="20" id="bcU-BY-H13"/>
+                            <constraint firstItem="Nbp-z5-JGn" firstAttribute="top" secondItem="QNC-72-OXl" secondAttribute="top" constant="482" id="ia6-xP-XPb"/>
+                            <constraint firstItem="10j-EM-vuy" firstAttribute="top" secondItem="QNC-72-OXl" secondAttribute="top" constant="30" id="kxH-Yz-p3y"/>
+                            <constraint firstItem="QNC-72-OXl" firstAttribute="bottom" secondItem="NeJ-Lm-VPP" secondAttribute="bottom" constant="656" id="oz0-CL-Ch1"/>
+                            <constraint firstItem="ngP-pH-ZYD" firstAttribute="leading" secondItem="QNC-72-OXl" secondAttribute="leading" constant="20" id="va2-5p-X9T"/>
+                            <constraint firstItem="QNC-72-OXl" firstAttribute="bottom" secondItem="QEz-05-225" secondAttribute="bottom" constant="711" id="vh2-a0-pKq"/>
+                            <constraint firstItem="QNC-72-OXl" firstAttribute="trailing" secondItem="10j-EM-vuy" secondAttribute="trailing" constant="72" id="wbu-gZ-LoH"/>
+                            <constraint firstItem="QNC-72-OXl" firstAttribute="bottom" secondItem="ngP-pH-ZYD" secondAttribute="bottom" constant="356" id="xmx-Zg-XMg"/>
+                            <constraint firstItem="QNC-72-OXl" firstAttribute="bottom" secondItem="vVN-HT-DHx" secondAttribute="bottom" constant="660.5" id="y7y-iP-Cps"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="QNC-72-OXl"/>
                     </view>
                     <navigationItem key="navigationItem" id="VLt-gP-jNL"/>
+                    <connections>
+                        <outlet property="addIngredientButton" destination="NeJ-Lm-VPP" id="Z5P-Z6-LgP"/>
+                        <outlet property="addStepButton" destination="n0O-rs-nUg" id="gQq-eH-AdJ"/>
+                        <outlet property="ingredientsTableView" destination="ngP-pH-ZYD" id="oMT-C1-qkr"/>
+                        <outlet property="recipeNameTextField" destination="10j-EM-vuy" id="0kh-CW-vjn"/>
+                        <outlet property="saveRecipeButton" destination="QEz-05-225" id="FaA-11-D4E"/>
+                        <outlet property="stepsTableView" destination="Nbp-z5-JGn" id="tmX-zV-4vD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yIB-L9-cyK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -304,7 +349,6 @@
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a52-PQ-kRu">
                                 <rect key="frame" x="361" y="53" width="33" height="37"/>
-                                <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="31"/>
                                 <state key="normal" image="xmark" catalog="system">
                                     <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -376,6 +420,7 @@
     </scenes>
     <resources>
         <image name="arrowtriangle.left.fill" catalog="system" width="128" height="113"/>
+        <image name="checkmark" catalog="system" width="128" height="114"/>
         <image name="pencil" catalog="system" width="128" height="113"/>
         <image name="play.fill" catalog="system" width="116" height="128"/>
         <image name="trash" catalog="system" width="121" height="128"/>

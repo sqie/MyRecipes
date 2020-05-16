@@ -10,12 +10,29 @@ import UIKit
 
 class AddRecipeController: UIViewController {
 
+    @IBOutlet weak var recipeNameTextField: UITextField!
+    @IBOutlet weak var saveRecipeButton: UIButton!
+    @IBOutlet weak var addIngredientButton: UIButton!
+    @IBOutlet weak var ingredientsTableView: UITableView!
+    @IBOutlet weak var addStepButton: UIButton!
+    @IBOutlet weak var stepsTableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
     
+    @IBAction func saveRecipe() {
+        print("save recipe")
+    }
+    
+    @IBAction func addIngredient() {
+        print("add ingredient")
+    }
+    
+    @IBAction func addStep() {
+        print("add step")
+    }
 
     /*
     // MARK: - Navigation

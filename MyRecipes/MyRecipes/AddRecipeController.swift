@@ -85,14 +85,8 @@ class AddRecipeController: UIViewController, UITableViewDelegate, UITableViewDat
             print("Couldn't save to core data")
         }
         
-        //---------------
-        
-        let alert = UIAlertController(title: "Recipe saved", message: "\(recipeName) saved", preferredStyle: .alert)
-        
-        alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: { action in
-        }))
-        
-        self.present(alert, animated: true)
+        addedRecipe = true
+        _ = navigationController?.popToRootViewController(animated: true)
     }
     
     @IBAction func addIngredient() {

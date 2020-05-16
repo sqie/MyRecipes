@@ -9,6 +9,8 @@
 import UIKit
 import CoreData
 
+var addedRecipe = true
+
 class RecipesController: UIViewController, UITableViewDelegate, UITableViewDataSource{
 
     @IBOutlet weak var addRecipeButton: UIButton!
@@ -23,15 +25,6 @@ class RecipesController: UIViewController, UITableViewDelegate, UITableViewDataS
         recipesTableView.delegate = self
         recipesTableView.dataSource = self
         recipesTableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
-        
-        //------------
-        
-        let query: NSFetchRequest<Recipe> = Recipe.fetchRequest()
-
-        //if has stored recipes
-        if let results = try? AppDelegate.viewContext.fetch(query) {
-            recipes = results.map { $0.name! }
-        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -49,6 +42,27 @@ class RecipesController: UIViewController, UITableViewDelegate, UITableViewDataS
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("This cell from the chat list was selected: \(indexPath.row)")
+    }
+    
+    func refresh(){
+        
+        let query: NSFetchRequest<Recipe> = Recipe.fetchRequest()
+
+        //if has stored recipes
+        if let results = try? AppDelegate.viewContext.fetch(query) {
+            recipes = results.map { $0.name! }
+        }
+        
+        self.recipesTableView.reloadData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        //if first load or added a new recipe
+        if addedRecipe {
+            refresh()
+            addedRecipe = false
+        }
     }
 }
 

@@ -383,7 +383,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Step" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="YWn-iW-NG4">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="YWn-iW-NG4">
                                 <rect key="frame" x="64" y="152" width="287" height="270"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -401,6 +401,9 @@
                                         <integer key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="exit" destination="RsP-Te-8fs" eventType="touchUpInside" id="24E-Ae-8f5"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FPe-UT-tAf">
                                 <rect key="frame" x="44" y="791" width="44" height="35"/>
@@ -417,6 +420,9 @@
                                         <integer key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="pressedPrev" destination="RsP-Te-8fs" eventType="touchUpInside" id="zjF-q7-D7X"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="quZ-RU-KAm">
                                 <rect key="frame" x="338" y="791" width="44" height="35"/>
@@ -433,6 +439,9 @@
                                         <integer key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="pressedNext" destination="RsP-Te-8fs" eventType="touchUpInside" id="nOc-kk-Sey"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -455,6 +464,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="vEY-5a-nyj"/>
                     </view>
+                    <connections>
+                        <outlet property="exitButton" destination="a52-PQ-kRu" id="b14-sd-IfO"/>
+                        <outlet property="nextButton" destination="quZ-RU-KAm" id="QCd-dK-NM5"/>
+                        <outlet property="prevButton" destination="FPe-UT-tAf" id="X58-pb-bZu"/>
+                        <outlet property="stepTextField" destination="YWn-iW-NG4" id="lOT-OX-O90"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aCo-QA-Jfx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

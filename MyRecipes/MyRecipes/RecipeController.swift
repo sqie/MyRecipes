@@ -9,6 +9,9 @@
 import UIKit
 import CoreData
 
+var ingredients = [String]()
+var steps = [String]()
+
 class RecipeController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var cookButton: UIButton!
@@ -19,9 +22,6 @@ class RecipeController: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     @IBOutlet weak var ingredientsTableView: UITableView!
     @IBOutlet weak var stepsTableView: UITableView!
-    
-    var ingredients = [String]()
-    var steps = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,10 +51,25 @@ class RecipeController: UIViewController, UITableViewDelegate, UITableViewDataSo
 
         self.ingredientsTableView.reloadData()
         self.stepsTableView.reloadData()
+        
+        //-------------------
+        
+        //if there are no steps
+        if steps.count == 0 {
+            cookButton.isHidden = true
+        }
+        
+        //------------------
+        
+        ingredients = ingredients.sorted(by: { $0 < $1 })
+        steps = steps.sorted(by: { $0 < $1 })
+        
+        ingredients = ingredients.map{String(String($0.suffix(from: $0.firstIndex(of: ":")!)).suffix(1))}
+        steps = steps.map{String(String($0.suffix(from: $0.firstIndex(of: ":")!)).suffix(1))}
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tableView == ingredientsTableView ? self.ingredients.count : self.steps.count
+        return tableView == ingredientsTableView ? ingredients.count : steps.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

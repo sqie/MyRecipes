@@ -100,23 +100,30 @@ class AddRecipeController: UIViewController, UITableViewDelegate, UITableViewDat
     
     @IBAction func saveRecipe() {
         
-        let recipeName = recipeNameTextField.text!
-        
         let recipe = Recipe(context: AppDelegate.viewContext)
-        recipe.name = recipeName
+        recipe.name = recipeNameTextField.text!
+        var loc = 1
+        
         
         //save ingredients to recipe in core data
         for ingredient in ingredients {
             let curIngredient = Ingredient(context: AppDelegate.viewContext)
-            curIngredient.name = ingredient
+            curIngredient.name = "\(loc):" + ingredient
             curIngredient.recipe = recipe
+            
+            loc += 1
         }
+        
+        loc = 1
         
         //save steps to recipe in core data
         for step in steps {
+            
             let curStep = Step(context: AppDelegate.viewContext)
-            curStep.name = step
+            curStep.name = "\(loc):" + step
             curStep.recipe = recipe
+            
+            loc += 1
         }
         
         //try to save to core data

@@ -89,7 +89,7 @@ class AddRecipeController: UIViewController, UITableViewDelegate, UITableViewDat
         
         let alert = UIAlertController(title: "Recipe saved", message: "\(recipeName) saved", preferredStyle: .alert)
         
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { action in
+        alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: { action in
         }))
         
         self.present(alert, animated: true)

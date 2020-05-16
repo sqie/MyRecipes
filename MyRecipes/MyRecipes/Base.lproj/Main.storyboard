@@ -61,7 +61,7 @@
                     <navigationItem key="navigationItem" id="fWx-1y-PYW"/>
                     <connections>
                         <outlet property="addRecipeButton" destination="qMP-OW-88o" id="RVP-Yh-upU"/>
-                        <outlet property="recipesTableOutlet" destination="YXf-CQ-5Pm" id="ccw-6Z-1yz"/>
+                        <outlet property="recipesTableView" destination="YXf-CQ-5Pm" id="SdK-3i-LsY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

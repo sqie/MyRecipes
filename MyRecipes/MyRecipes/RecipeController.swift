@@ -9,10 +9,6 @@
 import UIKit
 import CoreData
 
-//var recipes = [String]()
-//var curRecipeLoc = -1
-//var addedRecipe = true
-
 class RecipeController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var editButton: UIButton!
@@ -90,6 +86,24 @@ class RecipeController: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     @IBAction func deleteRecipe() {
         
+        let query: NSFetchRequest<Recipe> = Recipe.fetchRequest()
+
+        //delete the current recipe
+        if let results = try? AppDelegate.viewContext.fetch(query) {
+            
+            let toDelete = results[curRecipeLoc]
+            AppDelegate.viewContext.delete(toDelete)
+        }
+        
+        //try to save to core data
+        do {
+            try AppDelegate.viewContext.save()
+        } catch {
+            print("Couldn't save to core data")
+        }
+        
+        changedRecipes = true
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func closeRecipe() {

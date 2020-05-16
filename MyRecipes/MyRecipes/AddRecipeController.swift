@@ -87,7 +87,7 @@ class AddRecipeController: UIViewController, UITableViewDelegate, UITableViewDat
             print("Couldn't save to core data")
         }
         
-        addedRecipe = true
+        changedRecipes = true
         _ = navigationController?.popToRootViewController(animated: true)
     }
     

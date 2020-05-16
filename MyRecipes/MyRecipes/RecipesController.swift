@@ -11,7 +11,7 @@ import CoreData
 
 var recipes = [String]()
 var curRecipeLoc = -1
-var addedRecipe = true
+var changedRecipes = true
 let cellReuseIdentifier = "cell"
 
 class RecipesController: UIViewController, UITableViewDelegate, UITableViewDataSource{
@@ -65,9 +65,9 @@ class RecipesController: UIViewController, UITableViewDelegate, UITableViewDataS
     override func viewWillAppear(_ animated: Bool) {
         
         //if first load or added a new recipe
-        if addedRecipe {
+        if changedRecipes {
             refresh()
-            addedRecipe = false
+            changedRecipes = false
         }
     }
 }

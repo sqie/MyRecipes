@@ -79,4 +79,20 @@ class RecipeController: UIViewController, UITableViewDelegate, UITableViewDataSo
         
         return cell
     }
+    
+    @IBAction func editRecipe() {
+        
+    }
+    
+    @IBAction func cookRecipe() {
+        
+    }
+    
+    @IBAction func deleteRecipe() {
+        
+    }
+    
+    @IBAction func closeRecipe() {
+        dismiss(animated: true, completion: nil)
+    }
 }

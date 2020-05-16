@@ -64,8 +64,8 @@ class RecipeController: UIViewController, UITableViewDelegate, UITableViewDataSo
         ingredients = ingredients.sorted(by: { $0 < $1 })
         steps = steps.sorted(by: { $0 < $1 })
         
-        ingredients = ingredients.map{String(String($0.suffix(from: $0.firstIndex(of: ":")!)).suffix(1))}
-        steps = steps.map{String(String($0.suffix(from: $0.firstIndex(of: ":")!)).suffix(1))}
+        ingredients = ingredients.map{ String($0.split(separator: ":")[1])}
+        steps = steps.map{ String($0.split(separator: ":")[1])}
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

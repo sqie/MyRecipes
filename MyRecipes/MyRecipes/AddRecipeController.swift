@@ -14,19 +14,14 @@ class AddRecipeController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet weak var recipeNameTextField: UITextField!
     @IBOutlet weak var saveRecipeButton: UIButton!
     @IBOutlet weak var addIngredientButton: UIButton!
-    @IBOutlet weak var editIngredientsButton: UIButton!
     @IBOutlet weak var ingredientsTableView: UITableView!
     @IBOutlet weak var addStepButton: UIButton!
-    @IBOutlet weak var editStepsButton: UIButton!
     @IBOutlet weak var stepsTableView: UITableView!
     
     let cellReuseIdentifier = "cell"
     
     var ingredients = [String]()
     var steps = [String]()
-    
-    var checkImage: UIImage!
-    var editImage: UIImage!
     
     override func viewDidLoad() {
         
@@ -40,8 +35,8 @@ class AddRecipeController: UIViewController, UITableViewDelegate, UITableViewDat
         stepsTableView.dataSource = self
         stepsTableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
         
-        editImage = addIngredientButton.image(for: .normal)
-        checkImage = saveRecipeButton.image(for: .normal)
+        ingredientsTableView.isEditing = true
+        stepsTableView.isEditing = true
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -64,6 +59,43 @@ class AddRecipeController: UIViewController, UITableViewDelegate, UITableViewDat
         }
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        
+        //if modifying ingredients table
+        if tableView == ingredientsTableView {
+            
+            let movedObjTemp = ingredients[sourceIndexPath.item]
+            ingredients.remove(at: sourceIndexPath.item)
+            ingredients.insert(movedObjTemp, at: destinationIndexPath.item)
+        }
+        
+        //if modifying steps table
+        else {
+            
+            let movedObjTemp = steps[sourceIndexPath.item]
+            steps.remove(at: sourceIndexPath.item)
+            steps.insert(movedObjTemp, at: destinationIndexPath.item)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == .delete {
+            
+            //if modifying ingredients table
+            if tableView == ingredientsTableView {
+                ingredients.remove(at: indexPath.item)
+                ingredientsTableView.deleteRows(at: [indexPath], with: .automatic)
+            }
+            
+            //if modifying steps table
+            else {
+                steps.remove(at: indexPath.item)
+                stepsTableView.deleteRows(at: [indexPath], with: .automatic)
+            }
+        }
     }
     
     @IBAction func saveRecipe() {
@@ -122,21 +154,6 @@ class AddRecipeController: UIViewController, UITableViewDelegate, UITableViewDat
         }))
         
         self.present(alert, animated: true)
-    }
-    
-    @IBAction func editIngredients() {
-        
-        ingredientsTableView.isEditing = !ingredientsTableView.isEditing
-        
-        //if the user wants to edit the ingredients
-        if ingredientsTableView.isEditing {
-            editIngredientsButton.setImage(checkImage, for: .normal)
-        }
-        
-        //if the user finished editing the ingredients
-        else {
-            editIngredientsButton.setImage(editImage, for: .normal)
-        }
     }
     
     @IBAction func addStep() {

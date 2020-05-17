@@ -1,5 +1,5 @@
 # MyRecipes
-Video demo: (coming soon)
+Video demo: https://youtu.be/mweaNgRkHRA <br />
 Written in Swift
 
 App details:
